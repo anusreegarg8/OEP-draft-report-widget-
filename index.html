@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond the Funding Gap</title>
+<meta name="description" content="A Global Assessment of the Loss of USAID's Climate and Environment Programming — full report and Q&A, from One Earth Partners.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a2b3a;
+    --ink-soft:#54626e;
+    --ink-faint:#8b97a1;
+    --accent-blue:#1c6fb0;
+    --accent-blue-dark:#134f80;
+    --accent-green:#5a9c34;
+    --bg:#ffffff;
+    --bg-soft:#f6f7f5;
+    --bg-hero:#f4f7f6;
+    --border:#e2e6e2;
+    --amber-bg:#fdf3e2;
+    --amber-ink:#8a5a1c;
+    --amber-border:#f0dcb0;
+    --shadow: 0 4px 24px rgba(26,43,58,0.08);
+    --viewer-bg:#3a3f42;
+    --panel-bg:#ffffff;
+    --hover-bg:#e9efe9;
+    --brand-blue:#1c6fb0;
+    --brand-green:#5a9c34;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#e7ecef;
+      --ink-soft:#a9b4bc;
+      --ink-faint:#7c8890;
+      --accent-blue:#5eabe8;
+      --accent-blue-dark:#8fc6f2;
+      --accent-green:#8fcf62;
+      --bg:#12181c;
+      --bg-soft:#1a2126;
+      --bg-hero:#161d21;
+      --border:#2b343a;
+      --amber-bg:#3a2c14;
+      --amber-ink:#e3b06e;
+      --amber-border:#5c4520;
+      --shadow: 0 4px 24px rgba(0,0,0,0.35);
+      --viewer-bg:#0c0f11;
+      --panel-bg:#1a2126;
+      --hover-bg:#242e33;
+      --brand-blue:#1c6fb0;
+      --brand-green:#5a9c34;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#e7ecef;
+    --ink-soft:#a9b4bc;
+    --ink-faint:#7c8890;
+    --accent-blue:#5eabe8;
+    --accent-blue-dark:#8fc6f2;
+    --accent-green:#8fcf62;
+    --bg:#12181c;
+    --bg-soft:#1a2126;
+    --bg-hero:#161d21;
+    --border:#2b343a;
+    --amber-bg:#3a2c14;
+    --amber-ink:#e3b06e;
+    --amber-border:#5c4520;
+    --shadow: 0 4px 24px rgba(0,0,0,0.35);
+    --viewer-bg:#0c0f11;
+    --panel-bg:#1a2126;
+    --hover-bg:#242e33;
+    --brand-blue:#1c6fb0;
+    --brand-green:#5a9c34;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Playfair Display',Georgia,serif;
+    font-weight:600;
+    margin:0;
+    line-height:1.15;
+  }
+  a{color:var(--accent-blue);}
+  img{max-width:100%;display:block;}
+
+  /* ---------- Site bar ---------- */
+  .site-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:14px 24px;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    background:color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter:blur(6px);
+    z-index:50;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
+  .brand img{width:30px;height:30px;border-radius:50%;}
+  .brand-name{font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink);}
+  .site-bar a.back{font-size:14px;font-weight:500;text-decoration:none;color:var(--ink-soft);white-space:nowrap;}
+  .site-bar a.back:hover{color:var(--accent-blue);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--bg-hero);
+    padding:56px 24px 40px;
+    text-align:left;
+  }
+  .hero-inner{max-width:900px;margin:0 auto;}
+  .eyebrow{
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.10em;
+    text-transform:uppercase;
+    color:var(--accent-blue-dark);
+    margin-bottom:14px;
+  }
+  .hero h1{font-size:clamp(32px,5vw,52px);margin-bottom:14px;}
+  .hero .subtitle{
+    font-family:'Playfair Display',Georgia,serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(17px,2.2vw,21px);
+    color:var(--ink-soft);
+    max-width:680px;
+    margin-bottom:22px;
+  }
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 22px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+  }
+  .meta-row span{display:inline-flex;align-items:center;gap:6px;}
+  .meta-row .dot{width:5px;height:5px;border-radius:50%;background:var(--accent-green);display:inline-block;}
+
+  .draft-note{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    background:var(--amber-bg);
+    border:1px solid var(--amber-border);
+    color:var(--amber-ink);
+    padding:12px 16px;
+    border-radius:8px;
+    font-size:13.5px;
+    max-width:680px;
+  }
+  .draft-note svg{flex:none;margin-top:2px;}
+
+  /* ---------- Report shell ---------- */
+  .report-shell{
+    max-width:1180px;
+    margin:0 auto;
+    padding:36px 24px 64px;
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:32px;
+    align-items:start;
+  }
+  .toc{
+    position:sticky;
+    top:70px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--bg-soft);
+    padding:18px 16px;
+    max-height:calc(100vh - 100px);
+    overflow-y:auto;
+  }
+  .toc h2{font-size:13px;text-transform:uppercase;letter-spacing:0.07em;font-family:'Inter';font-weight:700;color:var(--ink-soft);margin-bottom:10px;}
+  .toc-group{margin-bottom:6px;}
+  .toc a{
+    display:block;
+    text-decoration:none;
+    color:var(--ink);
+    font-size:14px;
+    padding:6px 8px;
+    border-radius:6px;
+    line-height:1.35;
+  }
+  .toc a:hover{background:var(--hover-bg);}
+  .toc a.active{background:var(--accent-blue);color:#fff;}
+  .toc .top-link{font-weight:600;}
+  .toc .sub-link{font-size:13px;color:var(--ink-soft);padding-left:18px;}
+  .toc .sub-link:hover{color:var(--ink);}
+  .toc hr{border:none;border-top:1px solid var(--border);margin:10px 0;}
+
+  .viewer-col{min-width:0;}
+  .viewer-toolbar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:12px;
+  }
+  .viewer-toolbar .links{display:flex;gap:14px;flex-wrap:wrap;}
+  .viewer-toolbar a{
+    font-size:13.5px;
+    font-weight:600;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .viewer-frame-wrap{
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    background:var(--viewer-bg);
+  }
+  iframe.pdf{
+    width:100%;
+    height:85vh;
+    min-height:560px;
+    border:none;
+    display:block;
+  }
+  .fallback-note{
+    font-size:13px;
+    color:var(--ink-faint);
+    margin-top:10px;
+  }
+
+  /* mobile toc */
+  .mobile-toc{display:none;}
+
+  @media (max-width:560px){
+    .site-bar{padding:12px 16px;}
+    .brand-name{display:none;}
+    .site-bar a.back{font-size:12.5px;}
+  }
+
+  @media (max-width:880px){
+    .report-shell{grid-template-columns:1fr;}
+    .toc{display:none;}
+    .mobile-toc{
+      display:block;
+      position:relative;
+      margin-bottom:18px;
+    }
+    .mobile-toc summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:12px 14px;
+      font-weight:600;
+      font-size:14px;
+      background:var(--bg-soft);
+    }
+    .mobile-toc summary::-webkit-details-marker{display:none;}
+    .mobile-toc[open] summary{border-radius:8px 8px 0 0;}
+    .mobile-toc-panel{
+      border:1px solid var(--border);
+      border-top:none;
+      border-radius:0 0 8px 8px;
+      padding:10px 8px;
+      max-height:50vh;
+      overflow-y:auto;
+      background:var(--panel-bg);
+    }
+    .mobile-toc-panel a{display:block;padding:8px 10px;text-decoration:none;color:var(--ink);font-size:14px;border-radius:6px;}
+    .mobile-toc-panel a.sub-link{font-size:13px;color:var(--ink-soft);padding-left:22px;}
+    .mobile-toc-panel a:hover{background:var(--bg-soft);}
+    iframe.pdf{height:70vh;}
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--border);
+    padding:28px 24px 100px;
+    text-align:center;
+    font-size:13px;
+    color:var(--ink-faint);
+  }
+  footer a{color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<header class="site-bar">
+  <a class="brand" href="https://www.oneearthpartners.com/momentum-for-the-environment-initiative">
+    <img src="logo.png" alt="One Earth Partners logo">
+    <span class="brand-name">One Earth Partners</span>
+  </a>
+  <a class="back" href="https://www.oneearthpartners.com/momentum-for-the-environment-initiative">&larr; Momentum for the Environment Initiative</a>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">The Momentum for the Environment Initiative</div>
+    <h1>Beyond the Funding Gap</h1>
+    <p class="subtitle">A Global Assessment of the Loss of USAID's Climate and Environment Programming</p>
+    <div class="meta-row">
+      <span><span class="dot"></span>164 pages</span>
+      <span><span class="dot"></span>~57,500 words</span>
+      <span><span class="dot"></span>5 focus countries: Bangladesh, Colombia, Kenya, Peru, Vietnam</span>
+      <span><span class="dot"></span>August 2026 draft</span>
+    </div>
+    <div class="draft-note">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
+      <span>This page is running against the internal working draft (watermarked "Not for Distribution") for testing the report and Q&amp;A tool. The final report will be swapped in before this page is shared publicly.</span>
+    </div>
+  </div>
+</section>
+
+<div class="report-shell">
+
+  <!-- Desktop sidebar nav -->
+  <aside class="toc" id="desktop-toc">
+    <h2>Jump to a section</h2>
+    <nav id="toc-nav"></nav>
+  </aside>
+
+  <div class="viewer-col">
+
+    <!-- Mobile collapsible nav -->
+    <details class="mobile-toc">
+      <summary>Jump to a section ▾</summary>
+      <div class="mobile-toc-panel" id="mobile-toc-panel"></div>
+    </details>
+
+    <div class="viewer-toolbar">
+      <div class="links">
+        <a href="report.pdf" target="_blank" rel="noopener">↗ Open PDF in new tab</a>
+        <a href="report.pdf" download>⬇ Download PDF</a>
+      </div>
+      <div class="links">
+        <a href="#" id="ask-link">💬 Ask a question about this report</a>
+      </div>
+    </div>
+
+    <div class="viewer-frame-wrap">
+      <iframe class="pdf" id="pdf-frame" src="report.pdf#page=1&toolbar=1&navpanes=0" title="Beyond the Funding Gap — full report"></iframe>
+    </div>
+    <p class="fallback-note">Viewing inline requires a browser with a built-in PDF viewer (Chrome, Edge, Firefox, desktop Safari). If the report doesn't display above, use "Open PDF in new tab" instead.</p>
+  </div>
+
+</div>
+
+<footer>
+  Published by <a href="https://www.oneearthpartners.com">One Earth Partners</a> for the Momentum for the Environment Initiative.
+  Questions about the pipeline or the research? <a href="mailto:info@oneearthpartners.com">info@oneearthpartners.com</a>
+</footer>
+
+<script>
+  // ---- Section map: title, PDF page, and (optional) indent level ----
+  const sections = [
+    {t:"Executive Summary", p:5},
+    {t:"Introduction", p:18},
+    {t:"Methodology", p:22},
+    {t:"Part A: USAID Programming Characteristics", p:26},
+    {t:"Part B: Ten Core Findings", p:59},
+    {t:"Finding 1: The Leadership Void and Policy Backsliding", p:59, sub:true},
+    {t:"Finding 2: The Collapse of Data, Monitoring, and Transparency", p:67, sub:true},
+    {t:"Finding 3: Escalating Risks to the Environment and Marginalized Communities", p:74, sub:true},
+    {t:"Finding 4: Donor Contagion and Leverage Collapse", p:82, sub:true},
+    {t:"Finding 5: Direct Harm to Local Organizations", p:87, sub:true},
+    {t:"Finding 6: Severe Deficit in Implementation and Technical Capacity", p:94, sub:true},
+    {t:"Finding 7: A Shift Away from Unified, Long-Term Strategies", p:101, sub:true},
+    {t:"Finding 8: Forced Pivot Toward Private Sector Models", p:109, sub:true},
+    {t:"Finding 9: The Geopolitical and Diplomatic Void", p:117, sub:true},
+    {t:"Finding 10: Isolated Bright Spots", p:126, sub:true},
+    {t:"Conclusion", p:133},
+    {t:"Recommendations for Funders", p:138},
+    {t:"Recommendations for U.S. Foreign Assistance", p:142},
+    {t:"Project Pipeline", p:146},
+    {t:"Annex: Canonical Themes", p:149},
+    {t:"Annex: Global Survey Results", p:153},
+  ];
+
+  function buildNav(container, isMobile){
+    sections.forEach(s => {
+      const a = document.createElement('a');
+      a.href = "#";
+      a.textContent = s.t;
+      a.className = s.sub ? 'sub-link' : 'top-link';
+      a.dataset.page = s.p;
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToPage(s.p);
+        if(isMobile){
+          document.querySelector('.mobile-toc').removeAttribute('open');
+        }
+      });
+      container.appendChild(a);
+    });
+  }
+  buildNav(document.getElementById('toc-nav'), false);
+  buildNav(document.getElementById('mobile-toc-panel'), true);
+
+  function goToPage(p){
+    const frame = document.getElementById('pdf-frame');
+    // Reassign src to force navigation even to the same fragment repeatedly
+    frame.src = "report.pdf#page=" + p + "&toolbar=1&navpanes=0";
+    frame.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  // ---- "Ask a question" toolbar link opens the Chatling widget ----
+  document.getElementById('ask-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (window.Chatling && typeof window.Chatling.open === 'function') {
+      window.Chatling.open();
+    }
+  });
+</script>
+
+<!-- Chatling chat widget: floating bubble, bottom-right by default -->
+<script>
+  window.chtlConfig = { chatbotId: "1514931767" }
+</script>
+<script async
+  data-id="1514931767"
+  id="chtl-script"
+  type="text/javascript"
+  src="https://chatling.ai/js/embed.js">
+</script>
+
+</body>
+</html>
