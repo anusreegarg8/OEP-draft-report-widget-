@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond the Funding Gap</title>
+<meta name="description" content="A Global Assessment of the Loss of USAID's Environment and Climate Programming — full report and Q&A, from One Earth Partners.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000000;
+    --ink-soft:#48494b;
+    --ink-faint:#77797c;
+    --accent-blue:#000000;
+    --accent-blue-dark:#000000;
+    --accent-green:#b6c2ce;
+    --bg:#ffffff;
+    --bg-soft:#f2f4f6;
+    --bg-hero:#f5f6f7;
+    --border:#dde3e8;
+    --shadow: 0 4px 24px rgba(20,20,20,0.08);
+    --viewer-bg:#3a3f42;
+    --panel-bg:#ffffff;
+    --hover-bg:#e7ebef;
+    --brand-blue:#000000;
+    --brand-green:#b6c2ce;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#f5f5f5;
+      --ink-soft:#b9bdc1;
+      --ink-faint:#8a8d91;
+      --accent-blue:#ffffff;
+      --accent-blue-dark:#ffffff;
+      --accent-green:#8d99a5;
+      --bg:#121212;
+      --bg-soft:#1b1d1f;
+      --bg-hero:#18191b;
+      --border:#2c3034;
+      --shadow: 0 4px 24px rgba(0,0,0,0.35);
+      --viewer-bg:#0c0f11;
+      --panel-bg:#1b1d1f;
+      --hover-bg:#26292c;
+      --brand-blue:#ffffff;
+      --brand-green:#8d99a5;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#f5f5f5;
+    --ink-soft:#b9bdc1;
+    --ink-faint:#8a8d91;
+    --accent-blue:#ffffff;
+    --accent-blue-dark:#ffffff;
+    --accent-green:#8d99a5;
+    --bg:#121212;
+    --bg-soft:#1b1d1f;
+    --bg-hero:#18191b;
+    --border:#2c3034;
+    --shadow: 0 4px 24px rgba(0,0,0,0.35);
+    --viewer-bg:#0c0f11;
+    --panel-bg:#1b1d1f;
+    --hover-bg:#26292c;
+    --brand-blue:#ffffff;
+    --brand-green:#8d99a5;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Old Standard TT',Georgia,serif;
+    font-weight:700;
+    margin:0;
+    line-height:1.15;
+  }
+  a{color:var(--accent-blue);}
+  img{max-width:100%;display:block;}
+
+  /* ---------- Site bar ---------- */
+  .site-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:14px 24px;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    background:color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter:blur(6px);
+    z-index:50;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
+  .brand img{width:30px;height:30px;border-radius:50%;}
+  .brand-name{font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink);}
+  .site-bar a.back{font-size:14px;font-weight:500;text-decoration:none;color:var(--ink-soft);white-space:nowrap;}
+  .site-bar a.back:hover{color:var(--accent-blue);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--bg-hero);
+    padding:56px 24px 40px;
+    text-align:left;
+  }
+  .hero-inner{max-width:900px;margin:0 auto;}
+  .eyebrow{
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.10em;
+    text-transform:uppercase;
+    color:var(--accent-blue-dark);
+    margin-bottom:14px;
+  }
+  .hero h1{font-size:clamp(32px,5vw,52px);margin-bottom:14px;}
+  .hero .subtitle{
+    font-family:'Old Standard TT',Georgia,serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(17px,2.2vw,21px);
+    color:var(--ink-soft);
+    max-width:680px;
+    margin-bottom:22px;
+  }
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 22px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+  }
+  .meta-row span{display:inline-flex;align-items:center;gap:6px;}
+  .meta-row .dot{width:5px;height:5px;border-radius:50%;background:var(--accent-green);display:inline-block;}
+
+  /* ---------- Report shell ---------- */
+  .report-shell{
+    max-width:1180px;
+    margin:0 auto;
+    padding:36px 24px 64px;
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:32px;
+    align-items:start;
+  }
+  .toc{
+    position:sticky;
+    top:70px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--bg-soft);
+    padding:18px 16px;
+    max-height:calc(100vh - 100px);
+    overflow-y:auto;
+  }
+  .toc h2{font-size:13px;text-transform:uppercase;letter-spacing:0.07em;font-family:'Source Sans 3';font-weight:700;color:var(--ink-soft);margin-bottom:10px;}
+  .toc-group{margin-bottom:6px;}
+  .toc a{
+    display:block;
+    text-decoration:none;
+    color:var(--ink);
+    font-size:14px;
+    padding:6px 8px;
+    border-radius:6px;
+    line-height:1.35;
+  }
+  .toc a:hover{background:var(--hover-bg);}
+  .toc a.active{background:var(--accent-blue);color:#fff;}
+  .toc .top-link{font-weight:600;}
+  .toc .sub-link{font-size:13px;color:var(--ink-soft);padding-left:18px;}
+  .toc .sub-link:hover{color:var(--ink);}
+  .toc hr{border:none;border-top:1px solid var(--border);margin:10px 0;}
+
+  .viewer-col{min-width:0;}
+  .viewer-toolbar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:12px;
+  }
+  .viewer-toolbar .links{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .viewer-toolbar a{
+    font-size:13.5px;
+    font-weight:600;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .ask-button{
+    font-size:16px !important;
+    font-weight:700 !important;
+    color:#ffffff !important;
+    background:#000000;
+    padding:12px 22px;
+    border-radius:999px;
+    box-shadow:0 3px 14px rgba(0,0,0,0.3);
+    transition:transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  }
+  .ask-button:hover{
+    background:#2b2b2b;
+    transform:translateY(-1px);
+    box-shadow:0 6px 18px rgba(0,0,0,0.38);
+  }
+  .viewer-frame-wrap{
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    background:var(--viewer-bg);
+  }
+  iframe.pdf{
+    width:100%;
+    height:85vh;
+    min-height:560px;
+    border:none;
+    display:block;
+  }
+  .fallback-note{
+    font-size:13px;
+    color:var(--ink-faint);
+    margin-top:10px;
+  }
+  .tool-disclaimer{
+    font-size:13px;
+    color:var(--ink-faint);
+    margin-top:6px;
+  }
+
+  /* mobile toc */
+  .mobile-toc{display:none;}
+
+  @media (max-width:560px){
+    .site-bar{padding:12px 16px;}
+    .brand-name{display:none;}
+    .site-bar a.back{font-size:12.5px;}
+  }
+
+  @media (max-width:880px){
+    .report-shell{grid-template-columns:1fr;}
+    .toc{display:none;}
+    .mobile-toc{
+      display:block;
+      position:relative;
+      margin-bottom:18px;
+    }
+    .mobile-toc summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:12px 14px;
+      font-weight:600;
+      font-size:14px;
+      background:var(--bg-soft);
+    }
+    .mobile-toc summary::-webkit-details-marker{display:none;}
+    .mobile-toc[open] summary{border-radius:8px 8px 0 0;}
+    .mobile-toc-panel{
+      border:1px solid var(--border);
+      border-top:none;
+      border-radius:0 0 8px 8px;
+      padding:10px 8px;
+      max-height:50vh;
+      overflow-y:auto;
+      background:var(--panel-bg);
+    }
+    .mobile-toc-panel a{display:block;padding:8px 10px;text-decoration:none;color:var(--ink);font-size:14px;border-radius:6px;}
+    .mobile-toc-panel a.sub-link{font-size:13px;color:var(--ink-soft);padding-left:22px;}
+    .mobile-toc-panel a:hover{background:var(--bg-soft);}
+    iframe.pdf{height:70vh;}
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--border);
+    padding:28px 24px 100px;
+    text-align:center;
+    font-size:13px;
+    color:var(--ink-faint);
+  }
+  footer a{color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<header class="site-bar">
+  <a class="brand" href="https://www.oneearthpartners.com/momentum-for-the-environment-initiative">
+    <img src="logo.png" alt="One Earth Partners logo">
+    <span class="brand-name">One Earth Partners</span>
+  </a>
+  <a class="back" href="https://www.oneearthpartners.com/momentum-for-the-environment-initiative">&larr; Momentum for the Environment Initiative</a>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">The Momentum for the Environment Initiative</div>
+    <h1>Beyond the Funding Gap</h1>
+    <p class="subtitle">A Global Assessment of the Loss of USAID's Environment and Climate Programming</p>
+    <div class="meta-row">
+      <span><span class="dot"></span>166 pages</span>
+      <span><span class="dot"></span>September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="report-shell">
+
+  <!-- Desktop sidebar nav -->
+  <aside class="toc" id="desktop-toc">
+    <h2>Jump to a section</h2>
+    <nav id="toc-nav"></nav>
+  </aside>
+
+  <div class="viewer-col">
+
+    <!-- Mobile collapsible nav -->
+    <details class="mobile-toc">
+      <summary>Jump to a section ▾</summary>
+      <div class="mobile-toc-panel" id="mobile-toc-panel"></div>
+    </details>
+
+    <div class="viewer-toolbar">
+      <div class="links">
+        <a href="report.pdf" target="_blank" rel="noopener">↗ Open PDF in new tab</a>
+        <a href="report.pdf" download>⬇ Download PDF</a>
+      </div>
+      <div class="links">
+        <a href="#" id="ask-link" class="ask-button">💬 Ask a question about this report</a>
+      </div>
+    </div>
+
+    <div class="viewer-frame-wrap">
+      <iframe class="pdf" id="pdf-frame" src="report.pdf#page=1&toolbar=1&navpanes=0" title="Beyond the Funding Gap — full report"></iframe>
+    </div>
+    <p class="fallback-note">Viewing inline requires a browser with a built-in PDF viewer (Chrome, Edge, Firefox, desktop Safari). If the report doesn't display above, use "Open PDF in new tab" instead.</p>
+    <p class="tool-disclaimer">The chat assistant runs on Chatling and GPT-4o, and is meant purely as a navigation aid for exploring this report, not a replacement for reading it directly.</p>
+  </div>
+
+</div>
+
+<footer>
+  Published by <a href="https://www.oneearthpartners.com">One Earth Partners</a> for the Momentum for the Environment Initiative.
+  Questions about the pipeline or the research? <a href="mailto:info@oneearthpartners.com">info@oneearthpartners.com</a>
+</footer>
+
+<script>
+  // ---- Section map: title, PDF page, and (optional) indent level ----
+  const sections = [
+    {t:"Executive Summary", p:6},
+    {t:"Introduction", p:21},
+    {t:"Methodology", p:25},
+    {t:"Part A: USAID's Programming Characteristics", p:29},
+    {t:"Part B: Ten Core Findings", p:62},
+    {t:"Finding 1: The Leadership Void and Policy Backsliding", p:62, sub:true},
+    {t:"Finding 2: The Collapse of Data, Monitoring, and Transparency", p:70, sub:true},
+    {t:"Finding 3: Escalating Risks to the Environment and Marginalized Communities", p:76, sub:true},
+    {t:"Finding 4: Donor Contagion and Leverage Collapse", p:85, sub:true},
+    {t:"Finding 5: Direct Harm to Local Organizations", p:90, sub:true},
+    {t:"Finding 6: Reduction in Implementation and Technical Capacity", p:97, sub:true},
+    {t:"Finding 7: A Shift Away from Unified, Long-Term Strategies", p:104, sub:true},
+    {t:"Finding 8: Forced Pivot Toward Private Sector Models", p:112, sub:true},
+    {t:"Finding 9: The Geopolitical and Diplomatic Void", p:120, sub:true},
+    {t:"Finding 10: Isolated Bright Spots", p:129, sub:true},
+    {t:"Conclusion", p:137},
+    {t:"Recommendations for Funders", p:140},
+    {t:"Recommendations for U.S. Foreign Assistance", p:144},
+    {t:"Project Pipeline", p:148},
+    {t:"Annex: Canonical Themes", p:151},
+    {t:"Annex: Global Survey Results", p:155},
+    {t:"Acronyms", p:163},
+  ];
+
+  function buildNav(container, isMobile){
+    sections.forEach(s => {
+      const a = document.createElement('a');
+      a.href = "#";
+      a.textContent = s.t;
+      a.className = s.sub ? 'sub-link' : 'top-link';
+      a.dataset.page = s.p;
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToPage(s.p);
+        if(isMobile){
+          document.querySelector('.mobile-toc').removeAttribute('open');
+        }
+      });
+      container.appendChild(a);
+    });
+  }
+  buildNav(document.getElementById('toc-nav'), false);
+  buildNav(document.getElementById('mobile-toc-panel'), true);
+
+  function goToPage(p){
+    const frame = document.getElementById('pdf-frame');
+    // Browsers often ignore a hash-only src change on an already-loaded PDF
+    // (the "page=" open parameter only gets re-read on a fresh navigation).
+    // Force a real reload by clearing the iframe first, then setting the
+    // target URL a moment later.
+    frame.src = "about:blank";
+    window.setTimeout(() => {
+      frame.src = "report.pdf#page=" + p + "&toolbar=1&navpanes=0";
+    }, 60);
+    frame.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  // ---- "Ask a question" toolbar link opens the Chatling widget ----
+  document.getElementById('ask-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (window.Chatling && typeof window.Chatling.open === 'function') {
+      window.Chatling.open();
+    }
+  });
+</script>
+
+<!-- Chatling chat widget: floating bubble, bottom-right by default -->
+<script>
+  window.chtlConfig = { chatbotId: "1514931767" }
+</script>
+<script async
+  data-id="1514931767"
+  id="chtl-script"
+  type="text/javascript"
+  src="https://chatling.ai/js/embed.js">
+</script>
+
+</body>
+</html>
